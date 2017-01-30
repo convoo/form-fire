@@ -47,10 +47,11 @@ Polymer({
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
             if (this.nodes[i].value && this.nodes[i].name){
-                this.$.form.ref.set({
-                    testa:this.nodes[i].value,
-                    testb:this.nodes[i].name
-                });
+                var myObj = new Object;
+                var name = this.nodes[i].name;
+                var value = this.nodes[i].value;
+                myObj[name] = value;
+                this.$.form.ref.update(myObj);
             }
         }
     },

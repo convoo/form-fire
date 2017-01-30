@@ -15,7 +15,7 @@ A collection of elements for inserting text and image data to firebase database
     }
     </style>
     <content></content>
-    {{childCount}} - {{Children}}
+    {{nodes}}
 </template>
 
 <script>
@@ -31,8 +31,12 @@ A collection of elements for inserting text and image data to firebase database
 // https://www.polymer-project.org/1.0/docs/devguide/local-dom
 
     attached: function() {
-        this.Children = Polymer.dom(this).children;
-        console.log(this.Children);
+        this.nodes = Polymer.dom(this).children;
+        for (var i = 0; i < this.nodes.length; i++) {
+            if (this.nodes[i].value){
+                console.log("Name: " + this.nodes[i].name + " Value: " + this.nodes[i].value);
+            }
+        }
     },
 
     });

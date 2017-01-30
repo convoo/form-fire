@@ -1,5 +1,11 @@
+<!--
+@license
+Copyright (c) 2016 Convoo All Rights Reserved.
+Use of this source code is governed by a MIT license that can be found in the
+LICENSE file or at https://github.com/convoo/login-fire/blob/master/LICENSE.
+-->
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../polymerfire/firebase.html">
+<link rel="import" href="../polymerfire/firebase-document.html">
 
 <!--
 `form-fire`
@@ -10,6 +16,13 @@ A collection of elements for inserting text and image data to firebase database
 
 <dom-module id="form-fire">
 <template>
+
+<firebase-document
+    app-name="[[appName]]"
+    id="form"
+    path="[[path]]">
+</firebase-document>
+
     <style>
     :host {
         display: block;
@@ -31,11 +44,13 @@ Polymer({
 // https://www.polymer-project.org/1.0/docs/devguide/local-dom
 
     attached: function() {
-        console.log(this.path);
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
             if (this.nodes[i].value && this.nodes[i].name){
-                console.log("Name: " + this.nodes[i].name + ", Value: " + this.nodes[i].value);
+                this.$.form.ref.set({
+                    testa:this.nodes[i].value,
+                    testb:this.nodes[i].name
+                });
             }
         }
     },

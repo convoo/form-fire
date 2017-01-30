@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`form-fire`
+A collection of elements for inserting text and image data to firebase database
+
+@demo demo/index.html 
+-->
+
+<dom-module id="form-fire">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'form-fire',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'form-fire',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

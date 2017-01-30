@@ -8,27 +8,33 @@ A collection of elements for inserting text and image data to firebase database
 -->
 
 <dom-module id="form-fire">
-  <template>
+<template>
     <style>
-      :host {
+    :host {
         display: block;
-      }
+    }
     </style>
-    <h2>Hello [[prop1]]</h2>
-  </template>
+    <content></content>
+    {{childCount}} - {{Children}}
+</template>
 
-  <script>
+<script>
     Polymer({
-
-      is: 'form-fire',
-
-      properties: {
+    is: 'form-fire',
+    properties: {
         prop1: {
-          type: String,
-          value: 'form-fire',
+        type: String,
+        value: 'form-fire',
         },
-      },
+    },
+
+// https://www.polymer-project.org/1.0/docs/devguide/local-dom
+
+    attached: function() {
+        this.Children = Polymer.dom(this).children;
+        console.log(this.Children);
+    },
 
     });
-  </script>
+</script>
 </dom-module>

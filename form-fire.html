@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymerfire/firebase.html">
 
 <!--
 `form-fire`
@@ -15,30 +16,30 @@ A collection of elements for inserting text and image data to firebase database
     }
     </style>
     <content></content>
-    {{nodes}}
 </template>
 
 <script>
-    Polymer({
+
+Polymer({
     is: 'form-fire',
     properties: {
-        prop1: {
-        type: String,
-        value: 'form-fire',
+        path: {
+            type: String,
         },
     },
 
 // https://www.polymer-project.org/1.0/docs/devguide/local-dom
 
     attached: function() {
+        console.log(this.path);
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
-            if (this.nodes[i].value){
-                console.log("Name: " + this.nodes[i].name + " Value: " + this.nodes[i].value);
+            if (this.nodes[i].value && this.nodes[i].name){
+                console.log("Name: " + this.nodes[i].name + ", Value: " + this.nodes[i].value);
             }
         }
     },
 
-    });
+});
 </script>
 </dom-module>

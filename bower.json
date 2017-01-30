@@ -3,7 +3,8 @@
   "description": "A collection of elements for inserting text and image data to firebase database",
   "main": "form-fire.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "polymer": "Polymer/polymer#^1.4.0",
+    "polymerfire": "^0.10.3"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

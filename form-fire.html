@@ -48,18 +48,25 @@ Polymer({
     attached: function() {
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
-
-            if (this.nodes[i].value && this.nodes[i].name){
-                var input = new Object;
-                input[this.nodes[i].name] = this.nodes[i].value;
-                this.$.form.ref.update(input);
+            if(this.nodes[i].type == 'submit') {
+                this.nodes[i].addEventListener('click', function (event) {
+                this.submit();
+                
+            }.bind(this)) 
             }
-
-            this.nodes[i].addEventListener('keyup', function (event) {
-                console.log(input);   
-            })
-
         }
+    },
+
+    submit: function(){
+        console.log("this");
+        this.nodes = Polymer.dom(this).children;
+        var input = new Object;
+        for (var i = 0; i < this.nodes.length; i++) {
+            if (this.nodes[i].value && this.nodes[i].name){
+                input[this.nodes[i].name] = this.nodes[i].value;
+            }
+        }
+        this.$.form.ref.update(input);    
     },
 });
 </script>

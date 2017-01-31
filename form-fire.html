@@ -20,7 +20,8 @@ A collection of elements for inserting text and image data to firebase database
 <firebase-document
     app-name="[[appName]]"
     id="form"
-    path="[[path]]">
+    path="[[path]]"
+    data="{{data}}">
 </firebase-document>
 
     <style>
@@ -28,6 +29,7 @@ A collection of elements for inserting text and image data to firebase database
         display: block;
     }
     </style>
+    {{data}}
     <content></content>
 </template>
 
@@ -46,14 +48,19 @@ Polymer({
     attached: function() {
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
+
             if (this.nodes[i].value && this.nodes[i].name){
                 var input = new Object;
                 input[this.nodes[i].name] = this.nodes[i].value;
                 this.$.form.ref.update(input);
             }
+
+            this.nodes[i].addEventListener('keyup', function (event) {
+                console.log(input);   
+            })
+
         }
     },
-
 });
 </script>
 </dom-module>

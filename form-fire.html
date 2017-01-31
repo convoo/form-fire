@@ -29,7 +29,6 @@ A collection of elements for inserting text and image data to firebase database
         display: block;
     }
     </style>
-    {{data}}
     <content></content>
 </template>
 
@@ -40,25 +39,25 @@ Polymer({
     properties: {
         path: {
             type: String,
+        }, 
+        data:{
+            type: Object,
+            observer: '_setValues',
         },
     },
-
-// https://www.polymer-project.org/1.0/docs/devguide/local-dom
 
     attached: function() {
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
             if(this.nodes[i].type == 'submit') {
                 this.nodes[i].addEventListener('click', function (event) {
-                this.submit();
-                
+                this.submit();  
             }.bind(this)) 
             }
         }
     },
 
     submit: function(){
-        console.log("this");
         this.nodes = Polymer.dom(this).children;
         var input = new Object;
         for (var i = 0; i < this.nodes.length; i++) {
@@ -67,6 +66,23 @@ Polymer({
             }
         }
         this.$.form.ref.update(input);    
+    },
+
+    _setValues: function(){
+        var size = Object.keys(this.data).length;
+        var keys = Object.keys(this.data);
+        //this.nodes = Polymer.dom(this).children;
+
+       // Polymer.dom(this.$.fname).value = "test"        
+        console.log(Polymer.dom(this.$.fname));
+
+        // for (var i = 0; i < this.nodes.length; i++) {
+        //     var found = keys.indexOf(this.nodes[i].name);
+        //     if (found > 0) {
+        //         console.log(Polymer.dom(this)); 
+        //        // Polymer.dom(this).fname.value = "test"
+        //     }
+        // }        
     },
 });
 </script>

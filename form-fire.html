@@ -69,20 +69,13 @@ Polymer({
     },
 
     _setValues: function(){
-        var size = Object.keys(this.data).length;
-        var keys = Object.keys(this.data);
-        //this.nodes = Polymer.dom(this).children;
-
-       // Polymer.dom(this.$.fname).value = "test"        
-        console.log(Polymer.dom(this.$.fname));
-
-        // for (var i = 0; i < this.nodes.length; i++) {
-        //     var found = keys.indexOf(this.nodes[i].name);
-        //     if (found > 0) {
-        //         console.log(Polymer.dom(this)); 
-        //        // Polymer.dom(this).fname.value = "test"
-        //     }
-        // }        
+        this.nodes = Polymer.dom(this).children;
+        for (var i = 0; i < this.nodes.length; i++) {
+            var found = Object.keys(this.data).indexOf(this.nodes[i].name);
+            if(this.data[this.nodes[i].name]){
+                this.nodes[i].value = this.data[this.nodes[i].name]
+            }        
+        }
     },
 });
 </script>

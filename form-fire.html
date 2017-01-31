@@ -71,7 +71,6 @@ Polymer({
     _setValues: function(){
         this.nodes = Polymer.dom(this).children;
         for (var i = 0; i < this.nodes.length; i++) {
-            var found = Object.keys(this.data).indexOf(this.nodes[i].name);
             if(this.data[this.nodes[i].name]){
                 this.nodes[i].value = this.data[this.nodes[i].name]
             }        

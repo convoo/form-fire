@@ -1,6 +1,84 @@
+# Form-Fire
+
+
+<p align="center">
+  <img alt="form-fire" src="FormFire400.png" width="200">
+</p>
+
+<p align="center">
+A form that syncs data to Firebase.
+</p>
+
+<p align="center">
+  <a href="https://webcomponents.org/element/convoo/form-fire"><img src="https://img.shields.io/badge/webcomponents.org-published-blue.svg"></a>
+  <a href="https://gitter.im/convoo/General"><img src="https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg"></a>
+  <a href="http://waffle.io/convoo/roadmap"><img src="https://badge.waffle.io/convoo/login-fire.svg?label=In%20Progress&title=In%20Progress"></a>
+</p>
+
+---
+
 # \<form-fire\>
 
-A collection of elements for inserting text and image data to firebase database
+You can sync data to a form by syncing directly with a document using `method`= set. This is the default method.
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="../polymerfire/firebase-app.html">
+    <link rel="import" href="form-fire.html">
+    <div>
+      <template is="dom-bind">
+        <next-code-block></next-code-block>
+      </template>
+    </div>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<firebase-app
+  name="demo"
+  api-key="AIzaSyAhoCXxkY-ffNwA_7L7HIwBVpASYj1btNE"
+  auth-domain="convoo-login-demo.firebaseapp.com"
+  database-url="https://convoo-login-demo.firebaseio.com">
+</firebase-app>
+<form-fire path="/test" app-name="demo" method="set">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit" value="Save">
+</form-fire>
+```
+
+You can also push to a list at a specific Firebase path instead of setting. Do this by setting a value of "push" to `method`.
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="../polymerfire/firebase-app.html">
+    <link rel="import" href="form-fire.html">
+    <div>
+      <template is="dom-bind">
+        <next-code-block></next-code-block>
+      </template>
+    </div>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<firebase-app
+  name="demo"
+  api-key="AIzaSyAhoCXxkY-ffNwA_7L7HIwBVpASYj1btNE"
+  auth-domain="convoo-login-demo.firebaseapp.com"
+  database-url="https://convoo-login-demo.firebaseio.com">
+</firebase-app>
+<form-fire path="/test" app-name="demo" method="push">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit" value="Save">
+</form-fire>
+```
 
 ## Install the Polymer-CLI
 
